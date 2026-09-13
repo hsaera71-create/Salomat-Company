@@ -1,0 +1,265 @@
+name: Build APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: "Название приложения"
+        required: true
+        default: "Salomat App"
+
+      package_name:
+        description: "Package name"
+        required: true
+        default: "com.salomat.app"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Скачать репозиторий
+        uses: actions/checkout@v4
+
+      - name: Установить Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Установить Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Проверить package name
+        env:
+          PACKAGE_NAME: ${{ inputs.package_name }}
+        run: |
+          if [[ ! "$PACKAGE_NAME" =~ ^[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)+$ ]]; then
+            echo "Неверный package name"
+            exit 1
+          fi
+
+      - name: Создать Android проект
+        env:
+          APP_NAME: ${{ inputs.app_name }}
+          PACKAGE_NAME: ${{ inputs.package_name }}
+        run: |
+
+          mkdir -p app/src/main/java
+          mkdir -p app/src/main/assets
+          mkdir -p app/src/main/res/values
+
+          cp index.html app/src/main/assets/index.html
+
+          PACKAGE_PATH=$(echo "$PACKAGE_NAME" | tr '.' '/')
+          mkdir -p "app/src/main/java/$PACKAGE_PATH"
+
+          cat > settings.gradle <<'EOF'
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "SalomatBuilder"
+include(":app")
+EOF
+
+          cat > build.gradle <<'EOF'
+plugins {
+    id 'com.android.application' version '8.7.3' apply false
+}
+EOF
+
+          cat > gradle.properties <<'EOF'
+org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+android.useAndroidX=false
+EOF
+
+          cat > app/build.gradle <<EOF
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace "$PACKAGE_NAME"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "$PACKAGE_NAME"
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+    }
+}
+EOF
+
+          cat > app/src/main/res/values/styles.xml <<'EOF'
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme"
+           parent="@android:style/Theme.Material.Light.NoActionBar">
+
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:colorAccent">#1769FF</item>
+
+    </style>
+
+</resources>
+EOF
+
+          cat > app/src/main/AndroidManifest.xml <<EOF
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme"
+        android:label="$APP_NAME">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>
+EOF
+
+          cat > "app/src/main/java/$PACKAGE_PATH/MainActivity.java" <<EOF
+package $PACKAGE_NAME;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.webkit.WebResourceRequest;
+import android.content.Intent;
+import android.net.Uri;
+
+public class MainActivity extends Activity {
+
+    private WebView webView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        webView = new WebView(this);
+
+        setContentView(webView);
+
+        WebSettings settings = webView.getSettings();
+
+        settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
+        settings.setAllowFileAccess(true);
+        settings.setAllowContentAccess(true);
+        settings.setMediaPlaybackRequiresUserGesture(false);
+
+        webView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public boolean shouldOverrideUrlLoading(
+                    WebView view,
+                    WebResourceRequest request) {
+
+                Uri uri = request.getUrl();
+
+                String scheme = uri.getScheme();
+
+                if ("http".equals(scheme)
+                        || "https".equals(scheme)
+                        || "mailto".equals(scheme)
+                        || "tg".equals(scheme)) {
+
+                    try {
+
+                        Intent intent =
+                                new Intent(Intent.ACTION_VIEW, uri);
+
+                        startActivity(intent);
+
+                    } catch (Exception ignored) {
+                    }
+
+                    return true;
+                }
+
+                return false;
+            }
+        });
+
+        webView.loadUrl("file:///android_asset/index.html");
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (webView.canGoBack()) {
+
+            webView.goBack();
+
+        } else {
+
+            super.onBackPressed();
+        }
+    }
+}
+EOF
+
+      - name: Собрать APK
+        run: |
+          gradle assembleDebug --no-daemon
+
+      - name: Переименовать APK
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk \
+          "Salomat-${{ github.run_id }}.apk"
+
+      - name: Создать Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+
+          gh release create \
+            "salomat-build-${{ github.run_id }}" \
+            "Salomat-${{ github.run_id }}.apk" \
+            --title "APK Build #${{ github.run_number }}" \
+            --notes "APK автоматически собран через Salomat Company."
