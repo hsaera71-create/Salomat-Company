@@ -3,21 +3,32 @@ name: Build APK
 on:
   workflow_dispatch:
     inputs:
+
       app_name:
         description: "Название приложения"
         required: true
+        type: string
         default: "Salomat App"
 
       package_name:
         description: "Package name"
         required: true
-        default: "com.salomat.app"
+        type: string
+        default: "com.salomat.app.salomat"
+
+      icon_path:
+        description: "Путь к иконке"
+        required: true
+        type: string
+        default: ".salomat/icon.png"
 
 permissions:
   contents: write
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +36,7 @@ jobs:
       - name: Скачать репозиторий
         uses: actions/checkout@v4
 
-      - name: Установить Java
+      - name: Установить Java 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -40,8 +51,32 @@ jobs:
         env:
           PACKAGE_NAME: ${{ inputs.package_name }}
         run: |
+
           if [[ ! "$PACKAGE_NAME" =~ ^[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)+$ ]]; then
             echo "Неверный package name"
+            exit 1
+          fi
+
+          if [[ ! "$PACKAGE_NAME" == *.salomat ]]; then
+            echo "Package name должен заканчиваться на .salomat"
+            exit 1
+          fi
+
+      - name: Проверить index.html
+        run: |
+
+          if [ ! -f "index.html" ]; then
+            echo "В корне репозитория отсутствует index.html"
+            exit 1
+          fi
+
+      - name: Проверить иконку
+        env:
+          ICON_PATH: ${{ inputs.icon_path }}
+        run: |
+
+          if [ ! -f "$ICON_PATH" ]; then
+            echo "Иконка не найдена: $ICON_PATH"
             exit 1
           fi
 
@@ -49,16 +84,54 @@ jobs:
         env:
           APP_NAME: ${{ inputs.app_name }}
           PACKAGE_NAME: ${{ inputs.package_name }}
+          ICON_PATH: ${{ inputs.icon_path }}
         run: |
 
           mkdir -p app/src/main/java
           mkdir -p app/src/main/assets
           mkdir -p app/src/main/res/values
+          mkdir -p app/src/main/res/mipmap-mdpi
+          mkdir -p app/src/main/res/mipmap-hdpi
+          mkdir -p app/src/main/res/mipmap-xhdpi
+          mkdir -p app/src/main/res/mipmap-xxhdpi
+          mkdir -p app/src/main/res/mipmap-xxxhdpi
 
           cp index.html app/src/main/assets/index.html
 
           PACKAGE_PATH=$(echo "$PACKAGE_NAME" | tr '.' '/')
+
           mkdir -p "app/src/main/java/$PACKAGE_PATH"
+
+          cp "$ICON_PATH" app-icon-source.png
+
+          if command -v magick >/dev/null 2>&1; then
+            MAGICK="magick"
+          elif command -v convert >/dev/null 2>&1; then
+            MAGICK="convert"
+          else
+            echo "ImageMagick не найден"
+            exit 1
+          fi
+
+          $MAGICK app-icon-source.png \
+            -resize 48x48 \
+            app/src/main/res/mipmap-mdpi/ic_launcher.png
+
+          $MAGICK app-icon-source.png \
+            -resize 72x72 \
+            app/src/main/res/mipmap-hdpi/ic_launcher.png
+
+          $MAGICK app-icon-source.png \
+            -resize 96x96 \
+            app/src/main/res/mipmap-xhdpi/ic_launcher.png
+
+          $MAGICK app-icon-source.png \
+            -resize 144x144 \
+            app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+
+          $MAGICK app-icon-source.png \
+            -resize 192x192 \
+            app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
 
           cat > settings.gradle <<'EOF'
 pluginManagement {
@@ -79,6 +152,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "SalomatBuilder"
+
 include(":app")
 EOF
 
@@ -100,13 +174,18 @@ plugins {
 
 android {
     namespace "$PACKAGE_NAME"
+
     compileSdk 35
 
     defaultConfig {
         applicationId "$PACKAGE_NAME"
+
         minSdk 23
+
         targetSdk 35
+
         versionCode 1
+
         versionName "1.0"
     }
 }
@@ -114,14 +193,24 @@ EOF
 
           cat > app/src/main/res/values/styles.xml <<'EOF'
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
 
-    <style name="AppTheme"
-           parent="@android:style/Theme.Material.Light.NoActionBar">
+    <style
+        name="AppTheme"
+        parent="@android:style/Theme.Material.Light.NoActionBar">
 
         <item name="android:fontFamily">sans</item>
+
         <item name="android:windowActionModeOverlay">true</item>
+
         <item name="android:colorAccent">#1769FF</item>
+
+        <item name="android:navigationBarColor">#FFFFFF</item>
+
+        <item name="android:statusBarColor">#FFFFFF</item>
+
+        <item name="android:windowLightStatusBar">true</item>
 
     </style>
 
@@ -131,15 +220,19 @@ EOF
           cat > app/src/main/AndroidManifest.xml <<EOF
 <?xml version="1.0" encoding="utf-8"?>
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
-        android:label="$APP_NAME">
+        android:label="$APP_NAME"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher">
 
         <activity
             android:name=".MainActivity"
@@ -147,9 +240,11 @@ EOF
 
             <intent-filter>
 
-                <action android:name="android.intent.action.MAIN" />
+                <action
+                    android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
 
@@ -188,9 +283,13 @@ public class MainActivity extends Activity {
         WebSettings settings = webView.getSettings();
 
         settings.setJavaScriptEnabled(true);
+
         settings.setDomStorageEnabled(true);
+
         settings.setAllowFileAccess(true);
+
         settings.setAllowContentAccess(true);
+
         settings.setMediaPlaybackRequiresUserGesture(false);
 
         webView.setWebViewClient(new WebViewClient() {
@@ -204,15 +303,18 @@ public class MainActivity extends Activity {
 
                 String scheme = uri.getScheme();
 
-                if ("http".equals(scheme)
-                        || "https".equals(scheme)
-                        || "mailto".equals(scheme)
-                        || "tg".equals(scheme)) {
+                if ("http".equalsIgnoreCase(scheme)
+                        || "https".equalsIgnoreCase(scheme)
+                        || "mailto".equalsIgnoreCase(scheme)
+                        || "tg".equalsIgnoreCase(scheme)) {
 
                     try {
 
                         Intent intent =
-                                new Intent(Intent.ACTION_VIEW, uri);
+                                new Intent(
+                                    Intent.ACTION_VIEW,
+                                    uri
+                                );
 
                         startActivity(intent);
 
@@ -226,7 +328,9 @@ public class MainActivity extends Activity {
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(
+            "file:///android_asset/index.html"
+        );
     }
 
     @Override
@@ -239,21 +343,25 @@ public class MainActivity extends Activity {
         } else {
 
             super.onBackPressed();
+
         }
     }
 }
 EOF
 
-      - name: Собрать APK
+      - name: Собрать Debug APK
         run: |
+
           gradle assembleDebug --no-daemon
 
       - name: Переименовать APK
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk \
-          "Salomat-${{ github.run_id }}.apk"
 
-      - name: Создать Release
+          cp \
+            app/build/outputs/apk/debug/app-debug.apk \
+            "Salomat-${{ github.run_id }}.apk"
+
+      - name: Создать GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -261,5 +369,5 @@ EOF
           gh release create \
             "salomat-build-${{ github.run_id }}" \
             "Salomat-${{ github.run_id }}.apk" \
-            --title "APK Build #${{ github.run_number }}" \
-            --notes "APK автоматически собран через Salomat Company."
+            --title "Salomat APK #${{ github.run_number }}" \
+            --notes "Debug APK автоматически собран через Salomat Company."
