@@ -7,36 +7,17 @@
 <title>Salomat Company</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
     font-family:Inter,Arial,sans-serif;
     background:#f7faff;
     color:#101828;
     overflow-x:hidden;
 }
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-button,
-input{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
 
 .header{
     position:fixed;
@@ -159,9 +140,7 @@ button{
     margin-bottom:24px;
 }
 
-.hero h1 span{
-    color:#1264ff;
-}
+.hero h1 span{color:#1264ff}
 
 .hero p{
     max-width:650px;
@@ -206,9 +185,7 @@ button{
     border:1px solid #d9e5fa;
 }
 
-.btn-secondary:hover{
-    background:#f1f6ff;
-}
+.btn-secondary:hover{background:#f1f6ff}
 
 .hero-card{
     position:relative;
@@ -271,13 +248,9 @@ button{
     margin-bottom:3px;
 }
 
-.service-mini small{
-    color:#98a2b3;
-}
+.service-mini small{color:#98a2b3}
 
-.section{
-    padding:100px 22px;
-}
+.section{padding:100px 22px}
 
 .section-inner{
     max-width:1200px;
@@ -351,6 +324,8 @@ button{
     line-height:1.65;
 }
 
+/* BUILDER */
+
 .github-builder{
     position:relative;
     overflow:hidden;
@@ -388,7 +363,7 @@ button{
 .builder-description{
     color:#a9bad4;
     line-height:1.65;
-    max-width:700px;
+    max-width:760px;
     margin-bottom:30px;
 }
 
@@ -404,19 +379,12 @@ button{
     gap:8px;
 }
 
-.field.full{
-    grid-column:1/-1;
-}
+.field.full{grid-column:1/-1}
 
 .field label{
     font-size:13px;
     color:#b8c7dc;
     font-weight:800;
-}
-
-.field-row{
-    display:flex;
-    gap:8px;
 }
 
 .field input{
@@ -436,13 +404,68 @@ button{
     box-shadow:0 0 0 3px rgba(18,100,255,.14);
 }
 
+.field-row{
+    display:flex;
+    gap:8px;
+}
+
+.field-row input{flex:1}
+
 .token-button{
-    min-width:50px;
+    min-width:82px;
     border:1px solid #243854;
     border-radius:13px;
     background:#0d1d35;
     color:white;
 }
+
+.file-box{
+    border:1px dashed #345172;
+    border-radius:16px;
+    background:#0d1d35;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.file-box input{
+    border:0;
+    background:transparent;
+    padding:0;
+    min-height:auto;
+}
+
+.file-box input:focus{
+    box-shadow:none;
+}
+
+.icon-preview{
+    width:54px;
+    height:54px;
+    min-width:54px;
+    border-radius:14px;
+    object-fit:cover;
+    display:none;
+    border:1px solid #355477;
+}
+
+.icon-preview.show{display:block}
+
+.file-name{
+    color:#8fa4bf;
+    font-size:13px;
+    word-break:break-word;
+}
+
+.package-hint{
+    color:#7890ad;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.package-hint.valid{color:#65d391}
+.package-hint.invalid{color:#ff7b7b}
 
 .builder-actions{
     display:flex;
@@ -461,6 +484,11 @@ button{
 .builder-main{
     background:#1264ff;
     color:white;
+}
+
+.builder-main:disabled{
+    opacity:.55;
+    cursor:not-allowed;
 }
 
 .builder-check{
@@ -484,10 +512,7 @@ button{
     align-items:center;
 }
 
-.status-name{
-    font-weight:900;
-}
-
+.status-name{font-weight:900}
 .status-state{
     color:#70a9ff;
     font-weight:900;
@@ -526,9 +551,7 @@ button{
     border:1px solid #20508d;
 }
 
-.apk-result.show{
-    display:block;
-}
+.apk-result.show{display:block}
 
 .apk-result strong{
     display:block;
@@ -542,6 +565,13 @@ button{
     color:white;
     border-radius:11px;
     font-weight:900;
+}
+
+.run-link{
+    display:inline-block;
+    margin-top:10px;
+    color:#78aaff;
+    font-size:13px;
 }
 
 .stats{
@@ -568,9 +598,7 @@ button{
     margin-top:5px;
 }
 
-.support{
-    background:#eef5ff;
-}
+.support{background:#eef5ff}
 
 .support-box{
     background:white;
@@ -588,9 +616,7 @@ button{
     margin-bottom:9px;
 }
 
-.support-box p{
-    color:#667085;
-}
+.support-box p{color:#667085}
 
 .footer{
     background:#071326;
@@ -607,9 +633,7 @@ button{
     gap:20px;
 }
 
-.footer small{
-    color:#91a5c1;
-}
+.footer small{color:#91a5c1}
 
 .pointer-light{
     position:fixed;
@@ -662,42 +686,26 @@ button{
         flex-direction:column;
     }
 
-    .nav-links.open{
-        display:flex;
-    }
+    .nav-links.open{display:flex}
 
     .nav-links a{
         width:100%;
         text-align:center;
     }
 
-    .menu-btn{
-        display:block;
-    }
+    .menu-btn{display:block}
 
-    .hero-inner{
-        grid-template-columns:1fr;
-    }
+    .hero-inner{grid-template-columns:1fr}
 
-    .hero-card{
-        min-height:auto;
-    }
+    .hero-card{min-height:auto}
 
-    .cards{
-        grid-template-columns:1fr;
-    }
+    .cards{grid-template-columns:1fr}
 
-    .builder-grid{
-        grid-template-columns:1fr;
-    }
+    .builder-grid{grid-template-columns:1fr}
 
-    .field.full{
-        grid-column:auto;
-    }
+    .field.full{grid-column:auto}
 
-    .stats{
-        grid-template-columns:1fr;
-    }
+    .stats{grid-template-columns:1fr}
 
     .support-box{
         flex-direction:column;
@@ -717,661 +725,777 @@ button{
 <div class="pointer-light" id="pointerLight"></div>
 
 <header class="header">
-    <nav class="nav">
+<nav class="nav">
 
-        <a href="#home" class="logo">
-            <span class="logo-icon">S</span>
-            <span>Salomat Company</span>
-        </a>
+<a href="#home" class="logo">
+    <span class="logo-icon">S</span>
+    <span>Salomat Company</span>
+</a>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Menu">
-            <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
-                <path d="M4 7H20M4 12H20M4 17H20"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"/>
-            </svg>
-        </button>
+<button class="menu-btn" id="menuBtn" aria-label="Menu">
+<svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+<path d="M4 7H20M4 12H20M4 17H20"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"/>
+</svg>
+</button>
 
-        <div class="nav-links" id="navLinks">
-            <a href="#home">Главная</a>
-            <a href="#info">Информация</a>
-            <a href="#services">Услуги</a>
-            <a href="#builder">Собрать APK</a>
-            <a href="#support">Поддержка</a>
-            <a href="https://t.me/salomatcompanybot" target="_blank">Telegram</a>
-        </div>
+<div class="nav-links" id="navLinks">
+<a href="#home">Главная</a>
+<a href="#info">Информация</a>
+<a href="#services">Услуги</a>
+<a href="#builder">Собрать APK</a>
+<a href="#support">Поддержка</a>
+<a href="https://t.me/salomatcompanybot" target="_blank">Telegram</a>
+</div>
 
-    </nav>
+</nav>
 </header>
 
 <main>
 
 <section class="hero" id="home">
+<div class="hero-inner">
 
-    <div class="hero-inner">
+<div>
 
-        <div>
+<div class="badge">
+<span class="badge-dot"></span>
+Salomat Company
+</div>
 
-            <div class="badge">
-                <span class="badge-dot"></span>
-                Salomat Company
-            </div>
+<h1>
+Превращаем идеи<br>
+в <span>приложения.</span>
+</h1>
 
-            <h1>
-                Превращаем идеи<br>
-                в <span>приложения.</span>
-            </h1>
+<p>
+Salomat Company создаёт приложения из обычных файлов,
+веб-проектов и кода, а также разрабатывает Telegram-ботов
+и автоматизированные сервисы.
+</p>
 
-            <p>
-                Salomat Company создаёт приложения из обычных файлов,
-                веб-проектов и кода, а также разрабатывает Telegram-ботов
-                и автоматизированные сервисы.
-            </p>
+<div class="hero-buttons">
 
-            <div class="hero-buttons">
+<a href="#builder" class="btn btn-primary">
+Собрать APK
+</a>
 
-                <a href="#builder" class="btn btn-primary">
-                    Собрать APK
-                </a>
+<a href="#services" class="btn btn-secondary">
+Наши услуги
+</a>
 
-                <a href="#services" class="btn btn-secondary">
-                    Наши услуги
-                </a>
+</div>
 
-            </div>
+</div>
 
-        </div>
+<div class="hero-card">
 
-        <div class="hero-card">
+<div class="hero-glow"></div>
 
-            <div class="hero-glow"></div>
+<div class="hero-card-content">
 
-            <div class="hero-card-content">
+<div class="hero-card-title">
+Что создаёт Salomat
+</div>
 
-                <div class="hero-card-title">
-                    Что создаёт Salomat
-                </div>
+<div class="service-mini">
+<div class="service-mini-icon">01</div>
+<div>
+<strong>Android-приложения</strong>
+<small>Web → APK</small>
+</div>
+</div>
 
-                <div class="service-mini">
-                    <div class="service-mini-icon">01</div>
-                    <div>
-                        <strong>Android-приложения</strong>
-                        <small>Web → APK</small>
-                    </div>
-                </div>
+<div class="service-mini">
+<div class="service-mini-icon">02</div>
+<div>
+<strong>Telegram-боты</strong>
+<small>Автоматизация и сервисы</small>
+</div>
+</div>
 
-                <div class="service-mini">
-                    <div class="service-mini-icon">02</div>
-                    <div>
-                        <strong>Telegram-боты</strong>
-                        <small>Автоматизация и сервисы</small>
-                    </div>
-                </div>
+<div class="service-mini">
+<div class="service-mini-icon">03</div>
+<div>
+<strong>Web-проекты</strong>
+<small>Современные интерфейсы</small>
+</div>
+</div>
 
-                <div class="service-mini">
-                    <div class="service-mini-icon">03</div>
-                    <div>
-                        <strong>Web-проекты</strong>
-                        <small>Современные интерфейсы</small>
-                    </div>
-                </div>
+<div class="service-mini">
+<div class="service-mini-icon">04</div>
+<div>
+<strong>GitHub Actions</strong>
+<small>Автоматическая сборка APK</small>
+</div>
+</div>
 
-                <div class="service-mini">
-                    <div class="service-mini-icon">04</div>
-                    <div>
-                        <strong>GitHub Actions</strong>
-                        <small>Автоматическая сборка APK</small>
-                    </div>
-                </div>
+</div>
+</div>
 
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
 
 <section class="section" id="info">
+<div class="section-inner">
 
-    <div class="section-inner">
+<div class="section-head">
+<div class="label">Информация</div>
+<h2>Создаём цифровые продукты.</h2>
+<p>
+Наша задача — сделать разработку приложений и сервисов
+максимально простой и доступной.
+</p>
+</div>
 
-        <div class="section-head">
-            <div class="label">Информация</div>
-            <h2>Создаём цифровые продукты.</h2>
-            <p>
-                Наша задача — сделать разработку приложений и сервисов
-                максимально простой и доступной.
-            </p>
-        </div>
+<div class="cards">
 
-        <div class="cards">
+<div class="card">
+<div class="card-icon">S</div>
+<h3>Приложения</h3>
+<p>
+Превращаем веб-интерфейсы и проекты в Android-приложения.
+</p>
+</div>
 
-            <div class="card">
-                <div class="card-icon">S</div>
-                <h3>Приложения</h3>
-                <p>
-                    Превращаем веб-интерфейсы и проекты в Android-приложения.
-                </p>
-            </div>
+<div class="card">
+<div class="card-icon">B</div>
+<h3>Telegram-боты</h3>
+<p>
+Создаём ботов для автоматизации, поддержки,
+управления и различных сервисов.
+</p>
+</div>
 
-            <div class="card">
-                <div class="card-icon">B</div>
-                <h3>Telegram-боты</h3>
-                <p>
-                    Создаём ботов для автоматизации, поддержки,
-                    управления и различных сервисов.
-                </p>
-            </div>
+<div class="card">
+<div class="card-icon">W</div>
+<h3>Web</h3>
+<p>
+Разрабатываем современные адаптивные сайты
+и интерфейсы для мобильных устройств.
+</p>
+</div>
 
-            <div class="card">
-                <div class="card-icon">W</div>
-                <h3>Web</h3>
-                <p>
-                    Разрабатываем современные адаптивные сайты
-                    и интерфейсы для мобильных устройств.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
 
 <section class="section" id="services">
+<div class="section-inner">
 
-    <div class="section-inner">
+<div class="section-head">
+<div class="label">Услуги</div>
+<h2>Что можно заказать</h2>
+<p>
+Выбирай направление и связывайся с Salomat Company.
+</p>
+</div>
 
-        <div class="section-head">
-            <div class="label">Услуги</div>
-            <h2>Что можно заказать</h2>
-            <p>
-                Выбирай направление и связывайся с Salomat Company.
-            </p>
-        </div>
+<div class="cards">
 
-        <div class="cards">
+<div class="card">
+<div class="card-icon">01</div>
+<h3>Создание приложения</h3>
+<p>
+Android-приложения на основе готового веб-проекта
+или индивидуального интерфейса.
+</p>
+</div>
 
-            <div class="card">
-                <div class="card-icon">01</div>
-                <h3>Создание приложения</h3>
-                <p>
-                    Android-приложения на основе готового веб-проекта
-                    или индивидуального интерфейса.
-                </p>
-            </div>
+<div class="card">
+<div class="card-icon">02</div>
+<h3>Telegram Bot</h3>
+<p>
+Telegram-боты для различных задач,
+включая автоматические сервисы.
+</p>
+</div>
 
-            <div class="card">
-                <div class="card-icon">02</div>
-                <h3>Telegram Bot</h3>
-                <p>
-                    Telegram-боты для различных задач,
-                    включая автоматические сервисы.
-                </p>
-            </div>
+<div class="card">
+<div class="card-icon">03</div>
+<h3>Web-разработка</h3>
+<p>
+Современные мобильные сайты и интерфейсы
+в одном HTML-файле.
+</p>
+</div>
 
-            <div class="card">
-                <div class="card-icon">03</div>
-                <h3>Web-разработка</h3>
-                <p>
-                    Современные мобильные сайты и интерфейсы
-                    в одном HTML-файле.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
 
 <section class="section" id="builder">
+<div class="section-inner">
 
-    <div class="section-inner">
+<div class="github-builder">
 
-        <div class="github-builder">
+<div class="builder-content">
 
-            <div class="builder-content">
+<div class="builder-title">
+Salomat APK Builder
+</div>
 
-                <div class="builder-title">
-                    Собрать APK через GitHub
-                </div>
+<div class="builder-description">
+Загрузи иконку, укажи свой GitHub-репозиторий,
+название приложения и Package name. Salomat Company
+запустит GitHub Actions и соберёт Debug APK.
+Сборка выполняется на GitHub — отдельный сервер не нужен.
+GitHub Token используется только во время текущего сеанса
+и не сохраняется сайтом.
+</div>
 
-                <div class="builder-description">
-                    Подключи свой GitHub-репозиторий и запусти
-                    GitHub Actions прямо из Salomat Company.
-                    Твой GitHub Token используется только для запроса
-                    к GitHub API и не сохраняется на сайте.
-                </div>
+<div class="builder-grid">
 
-                <div class="builder-grid">
+<div class="field full">
+<label>GitHub Token</label>
 
-                    <div class="field full">
+<div class="field-row">
 
-                        <label>GitHub Token</label>
+<input
+id="githubToken"
+type="password"
+autocomplete="off"
+placeholder="Вставь GitHub Personal Access Token"
+>
 
-                        <div class="field-row">
+<button
+class="token-button"
+id="toggleToken"
+type="button"
+>
+Показать
+</button>
 
-                            <input
-                                id="githubToken"
-                                type="password"
-                                autocomplete="off"
-                                placeholder="Вставь GitHub Token"
-                            >
+</div>
+</div>
 
-                            <button
-                                class="token-button"
-                                id="toggleToken"
-                                type="button"
-                            >
-                                Показать
-                            </button>
+<div class="field full">
 
-                        </div>
+<label>GitHub Repository</label>
 
-                    </div>
+<input
+id="githubRepo"
+type="text"
+placeholder="https://github.com/username/my-app"
+>
 
-                    <div class="field">
+</div>
 
-                        <label>GitHub Repository</label>
+<div class="field full">
 
-                        <input
-                            id="githubRepo"
-                            type="text"
-                            placeholder="username/my-app"
-                        >
+<label>Иконка приложения</label>
 
-                    </div>
+<div class="file-box">
 
-                    <div class="field">
+<img
+id="iconPreview"
+class="icon-preview"
+alt="Preview"
+>
 
-                        <label>Workflow</label>
+<input
+id="iconFile"
+type="file"
+accept="image/png,image/jpeg"
+>
 
-                        <input
-                            id="githubWorkflow"
-                            type="text"
-                            value="build-apk.yml"
-                        >
+</div>
 
-                    </div>
+<div class="file-name" id="fileName">
+PNG или JPG, желательно квадратное изображение, до 1 MB.
+</div>
 
-                    <div class="field">
+</div>
 
-                        <label>Branch</label>
+<div class="field">
 
-                        <input
-                            id="githubBranch"
-                            type="text"
-                            value="main"
-                        >
+<label>Название приложения</label>
 
-                    </div>
+<input
+id="appName"
+type="text"
+value="Salomat App"
+maxlength="50"
+>
 
-                    <div class="field">
+</div>
 
-                        <label>Название APK</label>
+<div class="field">
 
-                        <input
-                            id="appName"
-                            type="text"
-                            value="Salomat App"
-                        >
+<label>Тип сборки</label>
 
-                    </div>
+<input
+type="text"
+value="Debug"
+readonly
+>
 
-                    <div class="field full">
+</div>
 
-                        <label>Package name</label>
+<div class="field full">
 
-                        <input
-                            id="packageName"
-                            type="text"
-                            value="com.salomat.app"
-                        >
+<label>Package name</label>
 
-                    </div>
+<input
+id="packageName"
+type="text"
+value="com.salomat.app.salomat"
+>
 
-                </div>
+<div
+class="package-hint"
+id="packageHint"
+>
+Package name обязательно должен заканчиваться на .salomat
+</div>
 
-                <div class="builder-actions">
+</div>
 
-                    <button
-                        class="builder-btn builder-main"
-                        id="buildButton"
-                        type="button"
-                    >
-                        Запустить сборку
-                    </button>
+</div>
 
-                    <button
-                        class="builder-btn builder-check"
-                        id="checkButton"
-                        type="button"
-                    >
-                        Проверить статус
-                    </button>
+<div class="builder-actions">
 
-                </div>
+<button
+class="builder-btn builder-main"
+id="buildButton"
+type="button"
+>
+Собрать Debug APK
+</button>
 
-                <div class="builder-status">
+<button
+class="builder-btn builder-check"
+id="checkButton"
+type="button"
+>
+Проверить статус
+</button>
 
-                    <div class="status-top">
+</div>
 
-                        <div class="status-name">
-                            GitHub Actions
-                        </div>
+<div class="builder-status">
 
-                        <div
-                            class="status-state"
-                            id="statusState"
-                        >
-                            Ожидание
-                        </div>
+<div class="status-top">
 
-                    </div>
+<div class="status-name">
+GitHub Actions
+</div>
 
-                    <div class="status-bar">
-                        <div
-                            class="status-progress"
-                            id="statusProgress"
-                        ></div>
-                    </div>
+<div
+class="status-state"
+id="statusState"
+>
+Ожидание
+</div>
 
-                    <div
-                        class="status-log"
-                        id="statusLog"
-                    >
-                        Введи Token и данные репозитория.
-                    </div>
+</div>
 
-                    <div
-                        class="apk-result"
-                        id="apkResult"
-                    >
+<div class="status-bar">
+<div
+class="status-progress"
+id="statusProgress"
+></div>
+</div>
 
-                        <strong>
-                            APK успешно собран
-                        </strong>
+<div
+class="status-log"
+id="statusLog"
+>
+Введи GitHub Token, репозиторий, название,
+иконку и Package name.
+</div>
 
-                        <a
-                            id="apkLink"
-                            class="apk-link"
-                            href="#"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Скачать APK
-                        </a>
+<div
+class="apk-result"
+id="apkResult"
+>
 
-                    </div>
+<strong>
+Debug APK успешно собран
+</strong>
 
-                </div>
+<a
+id="apkLink"
+class="apk-link"
+href="#"
+target="_blank"
+rel="noopener"
+>
+Скачать APK
+</a>
 
-            </div>
+<br>
 
-        </div>
+<a
+id="runLink"
+class="run-link"
+href="#"
+target="_blank"
+rel="noopener"
+style="display:none"
+>
+Открыть GitHub Actions
+</a>
 
-    </div>
+</div>
 
+</div>
+
+</div>
+</div>
+</div>
 </section>
 
 <section class="section">
+<div class="section-inner">
 
-    <div class="section-inner">
+<div class="stats">
 
-        <div class="stats">
+<div class="stat">
+<div class="stat-number">24/7</div>
+<div class="stat-label">
+Автоматизация
+</div>
+</div>
 
-            <div class="stat">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">
-                    Автоматизация
-                </div>
-            </div>
+<div class="stat">
+<div class="stat-number">3</div>
+<div class="stat-label">
+Основных направления
+</div>
+</div>
 
-            <div class="stat">
-                <div class="stat-number">3</div>
-                <div class="stat-label">
-                    Основных направления
-                </div>
-            </div>
+<div class="stat">
+<div class="stat-number">1</div>
+<div class="stat-label">
+Компания для проекта
+</div>
+</div>
 
-            <div class="stat">
-                <div class="stat-number">1</div>
-                <div class="stat-label">
-                    Компания для проекта
-                </div>
-            </div>
+</div>
 
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 <section class="section support" id="support">
+<div class="section-inner">
 
-    <div class="section-inner">
+<div class="support-box">
 
-        <div class="support-box">
+<div>
+<h2>Нужна помощь?</h2>
+<p>
+Напиши команде Salomat Company.
+</p>
+</div>
 
-            <div>
-                <h2>Нужна помощь?</h2>
+<a
+class="btn btn-primary"
+href="mailto:salomatcompany@gmail.com"
+>
+Написать в поддержку
+</a>
 
-                <p>
-                    Напиши команде Salomat Company.
-                </p>
-            </div>
+</div>
 
-            <a
-                class="btn btn-primary"
-                href="mailto:salomatcompany@gmail.com"
-            >
-                Написать в поддержку
-            </a>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 </main>
 
 <footer class="footer">
 
-    <div class="footer-inner">
+<div class="footer-inner">
 
-        <div class="logo">
-            <span class="logo-icon">S</span>
-            <span>Salomat Company</span>
-        </div>
+<div class="logo">
+<span class="logo-icon">S</span>
+<span>Salomat Company</span>
+</div>
 
-        <small>
-            © 2026 Salomat Company
-        </small>
+<small>
+© 2026 Salomat Company
+</small>
 
-    </div>
+</div>
 
 </footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
-/* =========================================
+
+/* ===============================
    MOBILE MENU
-========================================= */
+=============================== */
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
 
-menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener("click",()=>{
     navLinks.classList.toggle("open");
 });
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
+document.querySelectorAll(".nav-links a").forEach(link=>{
+    link.addEventListener("click",()=>{
         navLinks.classList.remove("open");
     });
 });
 
 
-/* =========================================
+/* ===============================
    POINTER LIGHT
-========================================= */
+=============================== */
 
-const pointerLight = document.getElementById("pointerLight");
+const pointerLight=document.getElementById("pointerLight");
 
-function moveLight(x, y){
-    pointerLight.style.left = x + "px";
-    pointerLight.style.top = y + "px";
-}
-
-document.addEventListener("mousemove", e => {
-    moveLight(e.clientX, e.clientY);
+document.addEventListener("mousemove",e=>{
+    pointerLight.style.left=e.clientX+"px";
+    pointerLight.style.top=e.clientY+"px";
 });
 
-document.addEventListener("touchmove", e => {
-
-    if(e.touches && e.touches[0]){
-        moveLight(
-            e.touches[0].clientX,
-            e.touches[0].clientY
-        );
+document.addEventListener("touchmove",e=>{
+    if(e.touches&&e.touches[0]){
+        pointerLight.style.left=e.touches[0].clientX+"px";
+        pointerLight.style.top=e.touches[0].clientY+"px";
     }
+},{passive:true});
 
-}, {passive:true});
 
-
-/* =========================================
+/* ===============================
    TOAST
-========================================= */
+=============================== */
 
-const toast = document.getElementById("toast");
+const toast=document.getElementById("toast");
 
 function showToast(message){
 
-    toast.textContent = message;
+    toast.textContent=message;
     toast.classList.add("show");
 
     clearTimeout(window.toastTimer);
 
-    window.toastTimer = setTimeout(() => {
+    window.toastTimer=setTimeout(()=>{
         toast.classList.remove("show");
-    }, 3500);
+    },4000);
 }
 
 
-/* =========================================
-   GITHUB BUILDER
-========================================= */
+/* ===============================
+   ELEMENTS
+=============================== */
 
-const tokenInput = document.getElementById("githubToken");
-const repoInput = document.getElementById("githubRepo");
-const workflowInput = document.getElementById("githubWorkflow");
-const branchInput = document.getElementById("githubBranch");
-const appNameInput = document.getElementById("appName");
-const packageInput = document.getElementById("packageName");
+const tokenInput=document.getElementById("githubToken");
+const repoInput=document.getElementById("githubRepo");
+const appNameInput=document.getElementById("appName");
+const packageInput=document.getElementById("packageName");
+const iconFile=document.getElementById("iconFile");
+const iconPreview=document.getElementById("iconPreview");
+const fileName=document.getElementById("fileName");
 
-const buildButton = document.getElementById("buildButton");
-const checkButton = document.getElementById("checkButton");
+const buildButton=document.getElementById("buildButton");
+const checkButton=document.getElementById("checkButton");
 
-const statusState = document.getElementById("statusState");
-const statusLog = document.getElementById("statusLog");
-const statusProgress = document.getElementById("statusProgress");
+const statusState=document.getElementById("statusState");
+const statusLog=document.getElementById("statusLog");
+const statusProgress=document.getElementById("statusProgress");
 
-const apkResult = document.getElementById("apkResult");
-const apkLink = document.getElementById("apkLink");
+const apkResult=document.getElementById("apkResult");
+const apkLink=document.getElementById("apkLink");
+const runLink=document.getElementById("runLink");
 
-let currentRunId = null;
-let dispatchTime = 0;
-let polling = false;
+let currentRunId=null;
+let currentRepo=null;
+let polling=false;
 
 
-/* -----------------------------------------
+/* ===============================
    TOKEN VISIBILITY
------------------------------------------ */
+=============================== */
 
-document.getElementById("toggleToken").addEventListener("click", function(){
+document.getElementById("toggleToken").addEventListener("click",function(){
 
-    if(tokenInput.type === "password"){
-
-        tokenInput.type = "text";
-        this.textContent = "Скрыть";
-
+    if(tokenInput.type==="password"){
+        tokenInput.type="text";
+        this.textContent="Скрыть";
     }else{
-
-        tokenInput.type = "password";
-        this.textContent = "Показать";
+        tokenInput.type="password";
+        this.textContent="Показать";
     }
 
 });
 
 
-/* -----------------------------------------
-   REPOSITORY PARSER
------------------------------------------ */
+/* ===============================
+   ICON PREVIEW
+=============================== */
 
-function parseRepository(value){
+iconFile.addEventListener("change",()=>{
 
-    let repo = value.trim();
+    const file=iconFile.files[0];
 
-    repo = repo
-        .replace(/^https?:\/\/github\.com\//i, "")
-        .replace(/^github\.com\//i, "")
-        .replace(/\/+$/, "")
-        .replace(/\.git$/i, "");
-
-    const parts = repo.split("/");
-
-    if(parts.length !== 2){
-        throw new Error(
-            "Репозиторий должен быть в формате username/repository"
-        );
+    if(!file){
+        iconPreview.classList.remove("show");
+        fileName.textContent="PNG или JPG, желательно квадратное изображение, до 1 MB.";
+        return;
     }
 
-    return parts[0] + "/" + parts[1];
+    if(!["image/png","image/jpeg"].includes(file.type)){
+        iconFile.value="";
+        iconPreview.classList.remove("show");
+        throwToast("Можно выбрать только PNG или JPG.");
+        return;
+    }
+
+    if(file.size>1024*1024){
+        iconFile.value="";
+        iconPreview.classList.remove("show");
+        throwToast("Иконка должна быть меньше 1 MB.");
+        return;
+    }
+
+    const reader=new FileReader();
+
+    reader.onload=()=>{
+        iconPreview.src=reader.result;
+        iconPreview.classList.add("show");
+    };
+
+    reader.readAsDataURL(file);
+
+    fileName.textContent=file.name+" — "+formatBytes(file.size);
+
+});
+
+
+function throwToast(message){
+    showToast(message);
 }
 
 
-/* -----------------------------------------
+function formatBytes(bytes){
+
+    if(bytes<1024){
+        return bytes+" B";
+    }
+
+    if(bytes<1024*1024){
+        return (bytes/1024).toFixed(1)+" KB";
+    }
+
+    return (bytes/(1024*1024)).toFixed(1)+" MB";
+}
+
+
+/* ===============================
+   PACKAGE VALIDATION
+=============================== */
+
+const packageHint=document.getElementById("packageHint");
+
+function isValidPackage(packageName){
+
+    if(!/^[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)+$/.test(packageName)){
+        return false;
+    }
+
+    return packageName.endsWith(".salomat");
+}
+
+
+function updatePackageHint(){
+
+    const value=packageInput.value.trim();
+
+    if(isValidPackage(value)){
+
+        packageHint.textContent="Package name корректный. Окончание .salomat подтверждено.";
+        packageHint.className="package-hint valid";
+
+    }else{
+
+        packageHint.textContent="Package name должен быть корректным и обязательно заканчиваться на .salomat";
+        packageHint.className="package-hint invalid";
+
+    }
+
+}
+
+packageInput.addEventListener("input",updatePackageHint);
+updatePackageHint();
+
+
+/* ===============================
+   REPOSITORY PARSER
+=============================== */
+
+function parseRepository(value){
+
+    let repo=value.trim();
+
+    repo=repo
+        .replace(/^https?:\/\/github\.com\//i,"")
+        .replace(/^github\.com\//i,"")
+        .replace(/\/+$/,"")
+        .replace(/\.git$/i,"");
+
+    const parts=repo.split("/");
+
+    if(parts.length!==2){
+        throw new Error(
+            "Репозиторий должен быть вида username/repository."
+        );
+    }
+
+    if(!/^[A-Za-z0-9_.-]+$/.test(parts[0]) ||
+       !/^[A-Za-z0-9_.-]+$/.test(parts[1])){
+
+        throw new Error("Неверная ссылка GitHub Repository.");
+    }
+
+    return parts[0]+"/"+parts[1];
+}
+
+
+/* ===============================
    GITHUB API
------------------------------------------ */
+=============================== */
 
-async function githubFetch(path, options = {}){
+async function githubFetch(path,options={}){
 
-    const token = tokenInput.value.trim();
+    const token=tokenInput.value.trim();
 
     if(!token){
         throw new Error("Вставь GitHub Token.");
     }
 
-    const response = await fetch(
-        "https://api.github.com" + path,
+    const response=await fetch(
+        "https://api.github.com"+path,
         {
             ...options,
             headers:{
                 "Accept":"application/vnd.github+json",
-                "Authorization":"Bearer " + token,
+                "Authorization":"Bearer "+token,
                 "X-GitHub-Api-Version":"2022-11-28",
                 "Content-Type":"application/json",
-                ...(options.headers || {})
+                ...(options.headers||{})
             }
         }
     );
 
-    let data = {};
+    let data={};
 
     try{
-        data = await response.json();
+        data=await response.json();
     }catch(e){}
 
     if(!response.ok){
 
         throw new Error(
-            data.message ||
-            "GitHub API error: " + response.status
+            data.message||
+            "GitHub API error: "+response.status
         );
     }
 
@@ -1379,223 +1503,567 @@ async function githubFetch(path, options = {}){
 }
 
 
-/* -----------------------------------------
+/* ===============================
    UI STATUS
------------------------------------------ */
+=============================== */
 
-function setStatus(state, log, progress){
+function setStatus(state,log,progress){
 
-    statusState.textContent = state;
-    statusLog.textContent = log;
-    statusProgress.style.width = progress + "%";
+    statusState.textContent=state;
+    statusLog.textContent=log;
+    statusProgress.style.width=Math.max(
+        0,
+        Math.min(100,progress)
+    )+"%";
 }
 
 
-/* -----------------------------------------
-   VALIDATION
------------------------------------------ */
+/* ===============================
+   CONFIG
+=============================== */
 
 function getConfig(){
 
-    const token = tokenInput.value.trim();
-    const repo = parseRepository(repoInput.value);
-    const workflow = workflowInput.value.trim();
-    const branch = branchInput.value.trim();
-    const appName = appNameInput.value.trim();
-    const packageName = packageInput.value.trim();
+    const token=tokenInput.value.trim();
 
     if(!token){
         throw new Error("Вставь GitHub Token.");
     }
 
-    if(!workflow){
-        throw new Error("Укажи workflow.");
-    }
+    const repo=parseRepository(repoInput.value);
 
-    if(!branch){
-        throw new Error("Укажи branch.");
-    }
+    const appName=appNameInput.value.trim();
+    const packageName=packageInput.value.trim();
 
     if(!appName){
         throw new Error("Укажи название приложения.");
     }
 
-    if(!/^[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)+$/.test(packageName)){
+    if(appName.length>50){
+        throw new Error("Название приложения слишком длинное.");
+    }
+
+    if(!isValidPackage(packageName)){
+
         throw new Error(
-            "Неверный Package name. Например: com.salomat.app"
+            "Package name должен быть корректным и заканчиваться на .salomat."
         );
+
+    }
+
+    if(!iconFile.files[0]){
+        throw new Error("Выбери иконку приложения.");
+    }
+
+    const file=iconFile.files[0];
+
+    if(!["image/png","image/jpeg"].includes(file.type)){
+        throw new Error("Иконка должна быть PNG или JPG.");
+    }
+
+    if(file.size>1024*1024){
+        throw new Error("Иконка должна быть меньше 1 MB.");
     }
 
     return {
         repo,
-        workflow,
-        branch,
         appName,
-        packageName
+        packageName,
+        icon:file
     };
 }
 
 
-/* -----------------------------------------
-   FIND NEW WORKFLOW RUN
------------------------------------------ */
+/* ===============================
+   BASE64 FILE
+=============================== */
 
-async function findRun(config){
+function fileToBase64(file){
 
-    const data = await githubFetch(
-        "/repos/" +
-        config.repo +
-        "/actions/workflows/" +
-        encodeURIComponent(config.workflow) +
-        "/runs?event=workflow_dispatch&per_page=20"
-    );
+    return new Promise((resolve,reject)=>{
 
-    const runs = data.workflow_runs || [];
+        const reader=new FileReader();
 
-    if(!runs.length){
-        return null;
-    }
+        reader.onload=()=>{
+            const result=String(reader.result);
+            const comma=result.indexOf(",");
 
-    const possible = runs.filter(run => {
+            if(comma===-1){
+                reject(new Error("Не удалось прочитать иконку."));
+                return;
+            }
 
-        const created =
-            new Date(run.created_at).getTime();
+            resolve(result.slice(comma+1));
+        };
 
-        return created >= dispatchTime - 15000;
+        reader.onerror=()=>{
+            reject(new Error("Ошибка чтения иконки."));
+        };
+
+        reader.readAsDataURL(file);
 
     });
 
-    if(possible.length){
-        possible.sort(
-            (a,b) =>
-                new Date(b.created_at) -
-                new Date(a.created_at)
+}
+
+
+/* ===============================
+   UPLOAD ICON TO REPOSITORY
+=============================== */
+
+async function uploadIcon(config){
+
+    setStatus(
+        "Загрузка иконки",
+        "Загружаем выбранную иконку в GitHub Repository...",
+        12
+    );
+
+    const base64=await fileToBase64(config.icon);
+
+    /*
+       Файл хранится в специальной папке.
+       Workflow после checkout берёт его оттуда.
+    */
+
+    const path=".salomat/icon.png";
+
+    let sha=null;
+
+    try{
+
+        const existing=await githubFetch(
+            "/repos/"+config.repo+
+            "/contents/"+encodeURIComponent(path)
         );
 
-        return possible[0];
+        if(existing && existing.sha){
+            sha=existing.sha;
+        }
+
+    }catch(error){
+
+        /*
+           404 означает, что файла ещё нет.
+           Другие ошибки нельзя игнорировать.
+        */
+
+        if(!String(error.message).includes("404")){
+            throw error;
+        }
+
     }
 
-    return null;
+    const body={
+        message:"Salomat Company: update app icon",
+        content:base64,
+        branch:"main"
+    };
+
+    if(sha){
+        body.sha=sha;
+    }
+
+    /*
+       Важно: branch берём из default branch ниже.
+       Сначала определяем default branch.
+    */
+
+    const repository=await githubFetch(
+        "/repos/"+config.repo
+    );
+
+    body.branch=repository.default_branch||"main";
+
+    await githubFetch(
+        "/repos/"+config.repo+
+        "/contents/"+encodeURIComponent(path),
+        {
+            method:"PUT",
+            body:JSON.stringify(body)
+        }
+    );
+
+    return {
+        path,
+        branch:body.branch
+    };
 }
 
 
-/* -----------------------------------------
-   GET RUN
------------------------------------------ */
+/* ===============================
+   GET WORKFLOW RUNS BEFORE BUILD
+=============================== */
 
-async function getRun(config, runId){
+async function getLatestRuns(config){
+
+    const data=await githubFetch(
+        "/repos/"+config.repo+
+        "/actions/workflows/build-apk.yml/runs?event=workflow_dispatch&per_page=20"
+    );
+
+    return data.workflow_runs||[];
+}
+
+
+/* ===============================
+   START WORKFLOW
+=============================== */
+
+async function dispatchWorkflow(config,iconInfo){
+
+    setStatus(
+        "Запуск",
+        "Отправляем команду GitHub Actions...",
+        20
+    );
+
+    const beforeRuns=await getLatestRuns(config);
+
+    const beforeIds=new Set(
+        beforeRuns.map(run=>String(run.id))
+    );
+
+    await githubFetch(
+        "/repos/"+config.repo+
+        "/actions/workflows/build-apk.yml/dispatches",
+        {
+            method:"POST",
+            body:JSON.stringify({
+
+                ref:iconInfo.branch,
+
+                inputs:{
+                    app_name:config.appName,
+                    package_name:config.packageName,
+                    icon_path:iconInfo.path
+                }
+
+            })
+        }
+    );
+
+    return {
+        beforeIds,
+        branch:iconInfo.branch,
+        dispatchAt:Date.now()
+    };
+}
+
+
+/* ===============================
+   FIND NEW RUN
+=============================== */
+
+async function findNewRun(config,launchInfo){
+
+    const runs=await getLatestRuns(config);
+
+    /*
+       workflow_dispatch не возвращает run_id.
+       Поэтому ищем новый запуск после dispatch,
+       одновременно исключая все известные старые run ID.
+    */
+
+    const candidates=runs.filter(run=>{
+
+        const idKnown=launchInfo.beforeIds.has(
+            String(run.id)
+        );
+
+        if(idKnown){
+            return false;
+        }
+
+        const created=
+            new Date(run.created_at).getTime();
+
+        return created>=launchInfo.dispatchAt-30000;
+
+    });
+
+    candidates.sort(
+        (a,b)=>
+        new Date(b.created_at)-
+        new Date(a.created_at)
+    );
+
+    return candidates[0]||null;
+}
+
+
+/* ===============================
+   GET RUN
+=============================== */
+
+async function getRun(config,runId){
 
     return await githubFetch(
-        "/repos/" +
-        config.repo +
-        "/actions/runs/" +
-        runId
+        "/repos/"+config.repo+
+        "/actions/runs/"+runId
     );
 
 }
 
 
-/* -----------------------------------------
+/* ===============================
    GET RELEASE APK
------------------------------------------ */
+=============================== */
 
-async function getReleaseApk(config, runId){
+async function getReleaseApk(config,runId){
 
-    const tag =
-        "salomat-build-" + runId;
+    const tag="salomat-build-"+runId;
 
-    const release = await githubFetch(
-        "/repos/" +
-        config.repo +
-        "/releases/tags/" +
-        encodeURIComponent(tag)
+    const release=await githubFetch(
+        "/repos/"+config.repo+
+        "/releases/tags/"+encodeURIComponent(tag)
     );
 
-    const assets = release.assets || [];
+    const assets=release.assets||[];
 
-    const apk = assets.find(asset =>
-        String(asset.name)
-            .toLowerCase()
-            .endsWith(".apk")
+    const apk=assets.find(asset=>
+        String(asset.name).toLowerCase().endsWith(".apk")
     );
 
     if(!apk){
         throw new Error(
-            "Release найден, но APK в нём пока нет."
+            "Release найден, но APK ещё не загружен."
         );
     }
 
     return {
-        url: apk.browser_download_url,
-        name: apk.name,
-        releaseUrl: release.html_url
+        url:apk.browser_download_url,
+        name:apk.name,
+        releaseUrl:release.html_url
     };
 }
 
 
-/* -----------------------------------------
-   WAIT FOR RELEASE
------------------------------------------ */
+/* ===============================
+   WAIT RELEASE
+=============================== */
 
-async function waitForRelease(config, runId){
+async function waitForRelease(config,runId){
 
-    for(let i = 0; i < 20; i++){
+    for(let i=0;i<30;i++){
 
         try{
 
-            const apk =
-                await getReleaseApk(config, runId);
-
-            return apk;
+            return await getReleaseApk(
+                config,
+                runId
+            );
 
         }catch(error){
 
-            await new Promise(resolve =>
-                setTimeout(resolve, 3000)
+            await new Promise(resolve=>
+                setTimeout(resolve,4000)
             );
+
         }
 
     }
 
     throw new Error(
-        "APK собран, но Release пока не найден. Проверь Release в GitHub."
+        "Сборка завершена, но Release с APK пока не найден."
     );
+
 }
 
 
-/* -----------------------------------------
+/* ===============================
    POLL BUILD
------------------------------------------ */
+=============================== */
 
-async function pollBuild(config){
+async function pollBuild(config,runId){
 
     if(polling){
         return;
     }
 
-    polling = true;
+    polling=true;
 
     try{
 
-        setStatus(
-            "Поиск сборки",
-            "Ищем запущенный GitHub Actions...",
-            15
+        for(let i=0;i<120;i++){
+
+            const run=await getRun(
+                config,
+                runId
+            );
+
+            runLink.href=run.html_url;
+            runLink.style.display="inline-block";
+
+            if(run.status==="queued"){
+
+                setStatus(
+                    "В очереди",
+                    "GitHub Runner готовится к сборке. Run #"+
+                    run.run_number,
+                    35
+                );
+
+            }else if(run.status==="in_progress"){
+
+                const progress=Math.min(
+                    90,
+                    42+Math.floor(i/2)
+                );
+
+                setStatus(
+                    "Сборка APK",
+                    "GitHub Actions создаёт Android-проект и собирает Debug APK. Run #"+
+                    run.run_number,
+                    progress
+                );
+
+            }else if(run.status==="completed"){
+
+                if(run.conclusion!=="success"){
+
+                    throw new Error(
+                        "Сборка завершилась с ошибкой: "+
+                        (run.conclusion||"unknown")+
+                        ". Открой GitHub Actions для подробностей."
+                    );
+
+                }
+
+                setStatus(
+                    "Готово",
+                    "Debug APK собран. Ищем Release...",
+                    95
+                );
+
+                const apk=await waitForRelease(
+                    config,
+                    runId
+                );
+
+                apkLink.href=apk.url;
+                apkLink.textContent="Скачать "+apk.name;
+
+                apkResult.classList.add("show");
+
+                setStatus(
+                    "APK готов",
+                    "Debug APK успешно собран.",
+                    100
+                );
+
+                showToast("Debug APK успешно собран.");
+
+                return;
+
+            }
+
+            await new Promise(resolve=>
+                setTimeout(resolve,4000)
+            );
+
+        }
+
+        throw new Error(
+            "Время ожидания сборки истекло."
         );
 
-        let run = null;
+    }finally{
 
-        for(let i = 0; i < 20; i++){
+        polling=false;
 
-            run = await findRun(config);
+    }
+
+}
+
+
+/* ===============================
+   START BUILD
+=============================== */
+
+buildButton.addEventListener("click",async()=>{
+
+    apkResult.classList.remove("show");
+    runLink.style.display="none";
+    currentRunId=null;
+
+    try{
+
+        const config=getConfig();
+
+        buildButton.disabled=true;
+
+        setStatus(
+            "Проверка",
+            "Проверяем GitHub Repository и настройки...",
+            5
+        );
+
+        /*
+           Получаем репозиторий.
+           Это также проверяет, что Token имеет доступ.
+        */
+
+        const repository=await githubFetch(
+            "/repos/"+config.repo
+        );
+
+        if(!repository.default_branch){
+            throw new Error(
+                "Не удалось определить default branch."
+            );
+        }
+
+        /*
+           Проверяем наличие workflow.
+        */
+
+        await githubFetch(
+            "/repos/"+config.repo+
+            "/actions/workflows/build-apk.yml"
+        );
+
+        /*
+           Загружаем иконку.
+        */
+
+        const iconInfo=await uploadIcon(config);
+
+        /*
+           Запускаем workflow.
+        */
+
+        const launchInfo=
+            await dispatchWorkflow(
+                config,
+                iconInfo
+            );
+
+        setStatus(
+            "Запущено",
+            "GitHub Actions принял команду. Ищем именно новый запуск...",
+            25
+        );
+
+        showToast(
+            "GitHub Actions запущен."
+        );
+
+        let run=null;
+
+        for(let i=0;i<20;i++){
+
+            run=await findNewRun(
+                config,
+                launchInfo
+            );
 
             if(run){
-                currentRunId = run.id;
                 break;
             }
 
-            await new Promise(resolve =>
-                setTimeout(resolve, 3000)
+            await new Promise(resolve=>
+                setTimeout(resolve,3000)
             );
 
         }
@@ -1603,159 +2071,26 @@ async function pollBuild(config){
         if(!run){
 
             throw new Error(
-                "GitHub Actions не вернул запуск. Проверь workflow и права Token."
+                "Новый запуск GitHub Actions не найден. Проверь workflow, Actions и права Token."
             );
 
         }
+
+        currentRunId=run.id;
+
+        runLink.href=run.html_url;
+        runLink.style.display="inline-block";
 
         setStatus(
             "Сборка запущена",
-            "Run #" + run.run_number,
+            "Run #"+run.run_number+" найден.",
             30
         );
 
-        for(let i = 0; i < 120; i++){
-
-            const current =
-                await getRun(config, currentRunId);
-
-            if(current.status === "queued"){
-
-                setStatus(
-                    "В очереди",
-                    "GitHub готовит runner...",
-                    35
-                );
-
-            }else if(current.status === "in_progress"){
-
-                const progress =
-                    Math.min(
-                        90,
-                        40 + Math.floor(i / 2)
-                    );
-
-                setStatus(
-                    "Сборка APK",
-                    "GitHub Actions выполняет workflow...",
-                    progress
-                );
-
-            }else if(current.status === "completed"){
-
-                if(current.conclusion === "success"){
-
-                    setStatus(
-                        "Готово",
-                        "APK успешно собран. Ищем файл...",
-                        95
-                    );
-
-                    const apk =
-                        await waitForRelease(
-                            config,
-                            currentRunId
-                        );
-
-                    apkLink.href = apk.url;
-                    apkLink.textContent =
-                        "Скачать " + apk.name;
-
-                    apkResult.classList.add("show");
-
-                    setStatus(
-                        "APK готов",
-                        "Сборка завершена успешно.",
-                        100
-                    );
-
-                    showToast(
-                        "APK успешно собран."
-                    );
-
-                    return;
-
-                }
-
-                throw new Error(
-                    "Сборка завершилась с ошибкой: " +
-                    (current.conclusion || "unknown")
-                );
-
-            }
-
-            await new Promise(resolve =>
-                setTimeout(resolve, 3000)
-            );
-
-        }
-
-        throw new Error(
-            "Ожидание сборки истекло."
+        await pollBuild(
+            config,
+            currentRunId
         );
-
-    }finally{
-
-        polling = false;
-
-    }
-
-}
-
-
-/* -----------------------------------------
-   START BUILD
------------------------------------------ */
-
-buildButton.addEventListener("click", async () => {
-
-    apkResult.classList.remove("show");
-    currentRunId = null;
-
-    try{
-
-        const config = getConfig();
-
-        dispatchTime = Date.now();
-
-        buildButton.disabled = true;
-        buildButton.style.opacity = ".6";
-
-        setStatus(
-            "Подключение",
-            "Отправляем запрос GitHub Actions...",
-            10
-        );
-
-        await githubFetch(
-            "/repos/" +
-            config.repo +
-            "/actions/workflows/" +
-            encodeURIComponent(config.workflow) +
-            "/dispatches",
-            {
-                method:"POST",
-                body:JSON.stringify({
-                    ref:config.branch,
-                    inputs:{
-                        app_name:config.appName,
-                        package_name:config.packageName
-                    }
-                })
-            }
-        );
-
-        setStatus(
-            "Запущено",
-            "GitHub принял команду на сборку.",
-            20
-        );
-
-        showToast(
-            "GitHub Actions запущен."
-        );
-
-        await pollBuild(config);
 
     }catch(error){
 
@@ -1765,68 +2100,57 @@ buildButton.addEventListener("click", async () => {
             0
         );
 
-        showToast(
-            error.message
-        );
+        showToast(error.message);
 
     }finally{
 
-        buildButton.disabled = false;
-        buildButton.style.opacity = "1";
+        buildButton.disabled=false;
 
     }
 
 });
 
 
-/* -----------------------------------------
+/* ===============================
    CHECK STATUS
------------------------------------------ */
+=============================== */
 
-checkButton.addEventListener("click", async () => {
+checkButton.addEventListener("click",async()=>{
 
     try{
 
-        const config = getConfig();
+        const config=getConfig();
 
         if(!currentRunId){
 
-            const data = await githubFetch(
-                "/repos/" +
-                config.repo +
-                "/actions/workflows/" +
-                encodeURIComponent(config.workflow) +
-                "/runs?event=workflow_dispatch&per_page=1"
-            );
+            const runs=await getLatestRuns(config);
 
-            if(
-                !data.workflow_runs ||
-                !data.workflow_runs.length
-            ){
-
+            if(!runs.length){
                 throw new Error(
-                    "Запусков этого workflow пока нет."
+                    "Запусков build-apk.yml пока нет."
                 );
             }
 
-            currentRunId =
-                data.workflow_runs[0].id;
+            currentRunId=runs[0].id;
+
         }
 
-        const run =
-            await getRun(
-                config,
-                currentRunId
-            );
+        const run=await getRun(
+            config,
+            currentRunId
+        );
 
-        if(run.status !== "completed"){
+        runLink.href=run.html_url;
+        runLink.style.display="inline-block";
+
+        if(run.status!=="completed"){
 
             setStatus(
-                run.status === "queued"
-                    ? "В очереди"
-                    : "Сборка APK",
-                "Run #" + run.run_number,
-                run.status === "queued" ? 35 : 65
+                run.status==="queued"
+                    ?"В очереди"
+                    :"Сборка APK",
+                "Run #"+run.run_number,
+                run.status==="queued"?35:65
             );
 
             showToast(
@@ -1834,31 +2158,31 @@ checkButton.addEventListener("click", async () => {
             );
 
             return;
+
         }
 
-        if(run.conclusion !== "success"){
+        if(run.conclusion!=="success"){
 
             throw new Error(
-                "Сборка завершилась: " +
-                run.conclusion
+                "Сборка завершилась: "+
+                (run.conclusion||"unknown")
             );
+
         }
 
-        const apk =
-            await getReleaseApk(
-                config,
-                currentRunId
-            );
+        const apk=await getReleaseApk(
+            config,
+            currentRunId
+        );
 
-        apkLink.href = apk.url;
-        apkLink.textContent =
-            "Скачать " + apk.name;
+        apkLink.href=apk.url;
+        apkLink.textContent="Скачать "+apk.name;
 
         apkResult.classList.add("show");
 
         setStatus(
             "APK готов",
-            "Сборка завершена успешно.",
+            "Debug APK успешно собран.",
             100
         );
 
@@ -1870,27 +2194,24 @@ checkButton.addEventListener("click", async () => {
             0
         );
 
-        showToast(
-            error.message
-        );
+        showToast(error.message);
 
     }
 
 });
 
 
-/* =========================================
-   CLICK RIPPLE
-========================================= */
+/* ===============================
+   CLICK ANIMATION
+=============================== */
 
-document.addEventListener("click", e => {
+document.addEventListener("click",e=>{
 
-    const button =
-        e.target.closest(".btn, .builder-btn");
+    const button=e.target.closest(
+        ".btn,.builder-btn"
+    );
 
-    if(!button){
-        return;
-    }
+    if(!button)return;
 
     button.animate(
         [
@@ -1907,17 +2228,17 @@ document.addEventListener("click", e => {
 });
 
 
-/* =========================================
-   TOKEN MEMORY
-   Token deliberately NOT saved.
-========================================= */
+/* ===============================
+   TOKEN IS NEVER SAVED
+=============================== */
 
-window.addEventListener("beforeunload", () => {
+window.addEventListener("beforeunload",()=>{
 
-    tokenInput.value = "";
+    tokenInput.value="";
 
 });
+
 </script>
 
 </body>
-  </html>
+</html>
